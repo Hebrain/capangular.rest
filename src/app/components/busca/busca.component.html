@@ -1,0 +1,29 @@
+<mat-card>
+  <mat-card-title>Encontre as cervejarias mais próximas:</mat-card-title>
+  <form #form="ngForm"  novalidate>
+      <mat-form-field>
+          <input matInput placeholder="Km" type="number"
+          name="valor" #valor="ngModel" ngModel><br>
+      </mat-form-field>
+    <br>
+      <button mat-raised-button type="submit" (click)="onSubmit(form)" color="primary" [disabled]="!form.form.valid">
+        Buscar
+      </button>
+</form>
+</mat-card>
+
+<div fxLayout="column">
+  <div fxLayout="row wrap">
+      <div fxFlex="25" fxFlex.md="33" fxFle.sm="50"
+      fxFlex.xs="100" fxLayout="column" class="div-img"
+      *ngFor="let estab of estabelecimentos">
+
+      <mat-card>
+          <img mat-card-image src="./../../../assets/images/cerveja-beer.jpg">
+          <mat-card-title>
+              {{ estab.name | uppercase }}
+          </mat-card-title>
+      </mat-card>
+      </div>
+  </div>
+</div>
